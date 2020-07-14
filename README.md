@@ -3,6 +3,8 @@ Python utilities to compute observer ephemerides and light curve for comet C/202
 
 Requires the [PyEphem](https://pypi.org/project/ephem/) package and [matplotlib](https://matplotlib.org/) for plots.
 
+This is free software. You may freely use this code under the terms of the [GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
 ---
 
 #### light_curve.py
