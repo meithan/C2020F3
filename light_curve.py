@@ -17,9 +17,9 @@ data_fname = "horizons_C2020F3NEOWISE.txt"
 # Δ: comet-Earth distance, AU
 # r: comet-Sun distance, AU
 # Source: http://astro.vanbuitenen.nl/comet/2020F3
-# Updated 14 jul
-m0 = 7.10
-k1 = 11.96
+# Updated 15 jul
+m0 = 7.05
+k1 = 12.01
 def get_magnitude(r, D):
   return m0 + 5*log10(D) + k1*log10(r)
 
