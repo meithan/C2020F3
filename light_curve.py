@@ -17,8 +17,8 @@ data_fname = "horizons_C2020F3NEOWISE.txt"
 # Δ: comet-Earth distance, AU
 # r: comet-Sun distance, AU
 # Source: http://astro.vanbuitenen.nl/comet/2020F3
-# Updated 15 jul
-m0 = 7.05
+# Updated 17 jul
+m0 = 7.00
 k1 = 12.01
 def get_magnitude(r, D):
   return m0 + 5*log10(D) + k1*log10(r)
@@ -73,7 +73,7 @@ plt.ylim(6, 0.8)
 
 plt.ylabel("Magnitude")
 plt.title("C/2020 F3 (NEOWISE) estimated light curve")
-notes = ["$m = m_0 + 5 log_{10}(Δ) + k_1 log_{10}(r)$", "$m_0$ = {}, $k_1$ = {}".format(m0, k1), "Δ: Earth dist, AU", "r: Sun dist, AU"]
+notes = ["$m = m_0 + 5 log_{10}(Δ) + k_1 log_{10}(r)$", "$m_0$ = {}, $k_1$ = {}".format(m0, k1)]
 y0 = 0.99
 dy = 0.04
 bbox = dict(facecolor="white", edgecolor='none', pad=0, alpha=0.5)
@@ -86,18 +86,18 @@ for i,text in enumerate(notes):
 ax2 = plt.gca().twinx()
 
 color = "C1"
-ln2, = ax2.plot(dates, rs, color=color, label="Sun distance, $r$")
+ln2, = ax2.plot(dates, rs, color=color, label="Sun distance, $r$ (AU)")
 plt.scatter([now_date], [now_r], zorder=10, color=color)
 plt.annotate("$r=${:.2f} AU".format(now_r), xy=(now_date, now_r), xytext=(10, -10), textcoords="offset pixels", color=color)
 
 color = "C2"
-ln3, = ax2.plot(dates, Ds, color=color, label="Earth distance, Δ")
+ln3, = ax2.plot(dates, Ds, color=color, label="Earth distance, Δ (AU)")
 plt.scatter([now_date], [now_D], zorder=10, color=color)
 plt.annotate("$Δ=${:.2f} AU".format(now_D), xy=(now_date, now_D), xytext=(10, 0), textcoords="offset pixels", color=color)
 
 plt.ylabel("Distance [AU]")
 
-plt.legend(handles=[ln1, ln2, ln3])
+plt.legend(handles=[ln1, ln2, ln3], loc="lower left")
 
 # ---------------------------------------------
 # DECORATIONS
