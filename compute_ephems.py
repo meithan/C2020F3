@@ -12,14 +12,15 @@ import ephem
 # PROGRAM CONFIGURATION
 
 # Dates are *local* time
-start_date = datetime(2020, 7, 11, 5, 30)
-end_date = datetime(2020, 7, 11, 7, 10)
+start_date = datetime(2020, 7, 20, 20, 15)
+end_date = datetime(2020, 7, 20, 21, 30)
 interval = timedelta(minutes=5)
 
 # Observer location
 location = base.locations["Mexico City"]
 # location = base.locations["Guadalajara"]
 # location = base.locations["Grenoble"]
+# location = base.locations["Tallinn"]
 
 # Filename with elements in XEphem format
 elems_fname = "comets.txt"
@@ -29,7 +30,11 @@ elems_fname = "comets.txt"
 # ------------------------------------------------------------------------------
 # DOWNLOAD OR LOAD COMET ELEMENTS
 
-comets = base.load_elements(elems_fname)
+if "--download" or "--update" in sys.argv:
+  force_download = True
+else:
+  force_download = False
+comets = base.load_elements(elems_fname, force_download=force_download)
 elements = comets["C/2020 F3 (NEOWISE)"]
 
 # ------------------------------------------------------------------------------
