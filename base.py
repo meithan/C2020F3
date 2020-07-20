@@ -16,6 +16,7 @@ locations_list = [
   Location("Guadalajara", 20.676216, -103.346928, 1500, -5),
   Location("Tonalá", 20.624140, -103.242150, 1540, -5),
   Location("Grenoble", 45.174480, 5.721035, 215, +2),
+  Location("Tallinn", 59.437222, 24.745278, 9, +3),
 ]
 
 locations = {x.name: x for x in locations_list}
