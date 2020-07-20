@@ -5,6 +5,7 @@ import sys
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as ticker
+import numpy as np
 
 # ==============================================================================
 
@@ -17,9 +18,9 @@ data_fname = "horizons_C2020F3NEOWISE.txt"
 # Δ: comet-Earth distance, AU
 # r: comet-Sun distance, AU
 # Source: http://astro.vanbuitenen.nl/comet/2020F3
-# Updated 17 jul
-m0 = 7.00
-k1 = 12.01
+# Updated 20 jul
+m0 = 6.95
+k1 = 11.98
 def get_magnitude(r, D):
   return m0 + 5*log10(D) + k1*log10(r)
 
