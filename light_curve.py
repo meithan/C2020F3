@@ -18,9 +18,9 @@ data_fname = "horizons_C2020F3NEOWISE.txt"
 # Δ: comet-Earth distance, AU
 # r: comet-Sun distance, AU
 # Source: http://astro.vanbuitenen.nl/comet/2020F3
-# Updated 20 jul
-m0 = 6.95
-k1 = 11.98
+# Updated 25 jul
+m0 = 6.82
+k1 = 11.80
 def get_magnitude(r, D):
   return m0 + 5*log10(D) + k1*log10(r)
 
@@ -61,13 +61,13 @@ now_D = Ds[i]
 plt.figure(figsize=(8,6))
 
 plt.axvline(dates[i], color="0.5")
-plt.annotate(dates[i].strftime("%d %b").lstrip("0"), xy=(now_date, 0.97), xycoords=("data", "axes fraction"), xytext=(5, 0), textcoords="offset pixels")
+plt.annotate(dates[i].strftime("%d %b").lstrip("0"), xy=(now_date, 0.97), xycoords=("data", "axes fraction"), ha="right", xytext=(-10, 0), textcoords="offset pixels")
 
 ln1, = plt.plot(dates, mags, color="k", label="Magnitude, $m$")
 ax1 = plt.gca()
 
 plt.scatter([now_date], [now_mag], color="k", zorder=10)
-plt.annotate("$m=${:.1f}".format(now_mag), xy=(now_date, now_mag), xytext=(10, 0), textcoords="offset pixels")
+plt.annotate("$m=${:.1f}".format(now_mag), xy=(now_date, now_mag), ha="right", va="center", xytext=(-10, 0), textcoords="offset pixels")
 
 plt.xlim(datetime(2020,6,20), datetime(2020,7,31))
 plt.ylim(6, 0.8)
@@ -89,12 +89,12 @@ ax2 = plt.gca().twinx()
 color = "C1"
 ln2, = ax2.plot(dates, rs, color=color, label="Sun distance, $r$ (AU)")
 plt.scatter([now_date], [now_r], zorder=10, color=color)
-plt.annotate("$r=${:.2f} AU".format(now_r), xy=(now_date, now_r), xytext=(10, -10), textcoords="offset pixels", color=color)
+plt.annotate("$r=${:.2f} AU".format(now_r), xy=(now_date, now_r), ha="right", va="center", xytext=(-10, -5), textcoords="offset pixels", color=color)
 
 color = "C2"
 ln3, = ax2.plot(dates, Ds, color=color, label="Earth distance, Δ (AU)")
 plt.scatter([now_date], [now_D], zorder=10, color=color)
-plt.annotate("$Δ=${:.2f} AU".format(now_D), xy=(now_date, now_D), xytext=(10, 0), textcoords="offset pixels", color=color)
+plt.annotate("$Δ=${:.2f} AU".format(now_D), xy=(now_date, now_D), ha="right", va="center", xytext=(-10, 5), textcoords="offset pixels", color=color)
 
 plt.ylabel("Distance [AU]")
 
